@@ -1,0 +1,55 @@
+﻿
+@model PoraoDosInstrumentos.Models.FeedbackViewModels
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback</title>
+    <!-- custom-theme -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Feedback" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //custom-theme -->
+    <link href="~/meufeedback/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" />
+</head>
+<body class="agileits_w3layouts">
+    <h1 class="agile_head text-center">Feedback</h1>
+    <div class="w3layouts_main wrap">
+        <h3>Sua opinião é muito importante para nós!</h3>
+        @using (Html.BeginForm("Create", "Feedback", FormMethod.Post, new { @class = "agile_form"}))
+        {
+            <h2>Participe da pesquisa de satisfação!</h2>
+            <p>Qual seu nível geral de satisfação com o site e nossos produtos?</p>
+            <ul class="agile_info_select">
+                @for(int i = 0; i < Model.Respondas.Count; i++)
+                {
+                    <li>
+                        @Html.RadioButtonFor(m=>Model.Select,Model.Respondas[i].ID,new { @id=i})
+                        <label for="@i">@Model.Respondas[i].Name</label>
+                        <div class="@Model.Respondas[i].Css"></div>
+                    </li>     
+                }
+            </ul>
+            <h2>Se você tiver um feedback específico, escreva para nós!</h2>
+            @Html.TextAreaFor(m => m.Comente,new { @class = "w3l_summary", @placeholder = "Comente" })
+            @Html.TextBoxFor(m => m.Nome, new { @placeholder = "Seu Nome" })
+            @Html.TextBoxFor(m => m.Email, new { @placeholder = "Seu E-mail" })
+       
+            <input type="submit" value="Enviar" class="agileinfo" />
+        }
+        <form action="#" method="post" class="agile_form">      
+        </form>
+    </div>
+    <div class="agileits_copyright text-center">
+        <p>Porão Dos Instrumentos</p>
+    </div>
+</body>
+</html>
+

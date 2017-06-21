@@ -1,0 +1,132 @@
+﻿@model PoraoDosInstrumentos.Models.Anuncio
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Excluir Anuncio:</h2>
+<div class="alert alert-warning">
+    <strong>Atencão!</strong> Deseja excluir seu anuncio?
+</div>
+<div>
+    <h4>Anuncio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Categoria Tipo:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.Nome)
+        </dd>
+
+        <dt>
+            Cidade:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Local.Nome)
+        </dd>
+
+        <dt>
+            E-mail do Anunciante:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vendedor.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            Data do Anuncio:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+
+        <dt>
+            Imagem Produto:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageUrl)
+            @if (Model.ImageUrl != null)
+            {
+                <img width="340" src="@Model.ImageUrl" alt=@Model.Titulo>
+            }
+            else
+            {
+                <img width="200" src="@Url.Action("GetImage", "Anuncio", new { id=Model.ID})" />
+            }
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container">
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Deletar</button>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">ATENÇÃO:</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <h2>Remover Anúncio!</h2>
+                                <div class="alert alert-danger col-lg-3">
+                                    <strong>Atenção! </strong> Excluir definitivamente?
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="col-lg-2">
+                                <input type="submit" value="Excluir" class="btn btn-danger" />
+                            </div>
+                            <div class="col-lg-4">
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <br />
+            <div>
+                @Html.ActionLink(" << Voltar p/ Anuncios", "Index")
+            </div>
+    }
+</div>

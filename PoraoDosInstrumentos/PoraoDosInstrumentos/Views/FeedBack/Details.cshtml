@@ -1,0 +1,43 @@
+﻿@model PoraoDosInstrumentos.Models.FeedBack
+
+<div>
+    <h4>FeedBack</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Avaliação:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Responda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Voltar p/ FeedBacks", "Index")
+</p>

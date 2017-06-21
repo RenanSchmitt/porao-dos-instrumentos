@@ -1,0 +1,73 @@
+﻿@model IEnumerable<PoraoDosInstrumentos.Models.FeedBack>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Feedback</h2>
+
+<p>
+    @Html.ActionLink("Enviar Feedback", "Create")
+</p>
+   
+<table class="table">
+    <tr>
+        <th>
+            Avaliação:
+        </th>
+        <th>
+           Comentário
+        </th>
+        <th>
+            Autor:
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @if (item.Responda == 1)
+            {
+                <div class="alert alert-success">
+                    <strong>Excelente!</strong>
+                </div>
+            }
+            else if (item.Responda == 2)
+            {
+                <div class="alert alert-info">
+                    <strong>Bom!</strong>
+                </div>
+            }
+            else if (item.Responda == 3)
+            {
+                <div class="alert alert-warning">
+                    <strong>Neutro!</strong>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger">
+                    <strong>Ruim!</strong>
+                </div>
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @if (User.Identity.Name == "admin@s2b.br")
+                {
+                @Html.ActionLink(" ", "Delete", new { id = item.ID }, new { @class = "btn btn-danger deleteBtn  btn-xs glyphicon glyphicon-trash" }) 
+                @Html.ActionLink("Detalhes", "Details", new { id = item.ID }, new { @class = "label label-info btn-lg" })
+            }
+  
+        </td>
+    </tr>
+}
+
+</table>

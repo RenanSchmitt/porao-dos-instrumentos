@@ -1,0 +1,125 @@
+﻿@model PoraoDosInstrumentos.Models.Anuncio
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Anuncio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <p class="bg-primary">Tipo de Produto:</p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.Nome)
+        </dd>
+
+        <dt>
+            <p class="bg-primary">Cidade:</p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Local.Nome)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Vendedor.ImageUrl)
+        </dd>
+        <dt>
+            <p class="bg-primary">Titulo:</p>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            <p class="bg-primary">descrição:</p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            <p class="bg-primary">Valor do produto:</p>
+        </dt>
+
+
+        <dt>
+            <p class="bg-primary">Status:</p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusItem.status)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            <p class="bg-primary">Data do cadastro:</p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+        <dt>
+            <p class="bg-primary">E-mail Vendedor:</p>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.usuario)
+        </dd>
+        <dt>
+            <p class="bg-primary">Imagem Produto:</p>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ImageUrl)
+            @if (Model.ImageUrl != null)
+            {
+                <img width="340" height="240" src="@Model.ImageUrl" alt=@Model.Titulo class="img-thumbnail">
+            }
+            else
+            {
+                <img width="340" height="240" src="@Url.Action("GetImage", "Anuncio", new { id=Model.ID})" class="img-thumbnail" />
+            }
+        </dd>
+    </dl>
+</div>
+<div class="container">
+    <h2>Avaliação do vendedor:</h2>
+    <div class="stars-default" data-rating="3"><input type="hidden" id="stars" name="rating" /></div>
+</div>
+<br />
+
+<p>
+    @if ((User.Identity.Name == "admin@s2b.br") || (User.Identity.Name == Model.usuario))
+    {
+        @Html.ActionLink(" ", "Delete", new { id = Model.ID }, new { @class = "btn btn-danger deleteBtn  btn-xs glyphicon glyphicon-trash" })
+    } |
+    @if (User.Identity.Name == Model.usuario)
+    {
+        @Html.ActionLink("Editar", "Edit", new { id = Model.ID }, new { @class = "btn btn-warning" })
+    } |
+    @if (User.Identity.Name == Model.usuario)
+    {
+        @Html.ActionLink("Comprar", "Comprar", new { id = Model.ID }, new { @class = "btn btn-primary disabled" })
+    }
+    else
+    {
+        @Html.ActionLink("Comprar", "Comprar", new { id = Model.ID }, new { @class = "btn btn-primary" })
+    } |
+
+    @Html.ActionLink("Voltar Para Anuncios", "Index")
+</p>
+
+@section scripts{
+    @Scripts.Render("~/Scripts/rating.js")
+
+}
+
