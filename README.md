@@ -108,23 +108,25 @@ Filtro avançado de busca por categoria e localização
 
 Deploy em Azure ou AWS
 
-💼 Autores
+## 💼 Autores
 
-👋 Desenvolvido por:
+Este projeto foi desenvolvido por:  
+- **Renan Schmitt** — Desenvolvedor Web Full Stack  
+- **Willian Pereira** — Desenvolvedor C# / ASP.NET  
 
-Renan Schmitt — UX/UI Designer, Analista de Projetos e Desenvolvedor Web
+Ambos participaram do **trabalho final da certificação em Desenvolvimento C# ASP.NET do programa S2B (Microsoft)**, com foco em criar uma plataforma funcional e intuitiva para músicos comprarem e venderem instrumentos.
 
-Willian Pereira — Desenvolvedor C# / ASP.NET
+---
 
-Ambos com foco em soluções web completas e funcionais, combinando backend robusto com interface intuitiva.
+## 🧾 Licença
 
-🔗 Portfólio Renan Schmitt
+Distribuído sob a licença **MIT** — livre para estudo, modificação e aprimoramento.
 
-💼 LinkedIn Renan Schmitt
+---
 
-📧 renanschmitt@gmail.com
-
-(Contato Willian Pereira pode ser adicionado aqui se quiser)
+<div align="center">
+  <sub>🎵 Porão dos Instrumentos — Sistema de compra e venda de instrumentos musicais 🎶</sub>
+</div>
 
 🧾 Licença
 
